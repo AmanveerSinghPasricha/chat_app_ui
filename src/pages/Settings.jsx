@@ -53,7 +53,7 @@ export default function Settings() {
         bio: profile.bio 
       });
       
-      // ✅ res.data.data works because your router uses the success_response wrapper
+      // res.data.data works because your router uses the success_response wrapper
       const updatedUser = res.data.data || res.data;
       
       // Update global context so the Sidebar/Navbar updates instantly
@@ -63,7 +63,7 @@ export default function Settings() {
     } catch (err) {
       console.error("Update Error:", err);
       
-      // ✅ Fixed error extraction logic to prevent 'undefined'
+      // Fixed error extraction logic to prevent 'undefined'
       const errorMessage = 
         err.response?.data?.detail || 
         err.response?.data?.message || 

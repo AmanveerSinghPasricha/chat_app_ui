@@ -15,7 +15,7 @@ export const CryptoService = {
   },
 
   generateIdentityKeyPair: () => {
-    console.log("🛠️ [DEBUG Crypto] Generating Identity Key Pair...");
+    console.log("[DEBUG Crypto] Generating Identity Key Pair...");
     return {
       pubKey: `id_pub_${Date.now()}_${Math.random().toString(36).substring(7)}`,
       privKey: `id_priv_${Date.now()}`
@@ -23,7 +23,7 @@ export const CryptoService = {
   },
 
   generateSignedPreKey: (identityPrivKey) => {
-    console.log("🛠️ [DEBUG Crypto] Generating Signed PreKey...");
+    console.log("[DEBUG Crypto] Generating Signed PreKey...");
     return {
       key_id: 1,
       public_key: `spk_pub_${Date.now()}`,
@@ -32,7 +32,7 @@ export const CryptoService = {
   },
 
   generateOneTimePreKeys: (count = 5) => {
-    console.log(`🛠️ [DEBUG Crypto] Generating ${count} One-Time PreKeys...`);
+    console.log(`[DEBUG Crypto] Generating ${count} One-Time PreKeys...`);
     return Array.from({ length: count }, (_, i) => ({
       key_id: i + 1,
       public_key: `otpk_pub_${Date.now()}_${i}`
@@ -41,7 +41,7 @@ export const CryptoService = {
 
   // REAL AES-GCM ENCRYPTION
   encryptMessage: async (text, receiverBundle) => {
-    console.log("🛠️ [DEBUG Crypto] Performing AES-GCM Encryption...");
+    console.log("[DEBUG Crypto] Performing AES-GCM Encryption...");
     try {
       const key = await CryptoService._getSecretKey();
       const iv = window.crypto.getRandomValues(new Uint8Array(12)); // The Nonce (Initialization Vector)
@@ -60,7 +60,7 @@ export const CryptoService = {
         ephemeral_pub: "dh_active"
       };
     } catch (e) {
-      console.error("❌ [DEBUG Crypto] Encryption Error:", e);
+      console.error("[DEBUG Crypto] Encryption Error:", e);
       throw e;
     }
   },
@@ -69,7 +69,7 @@ export const CryptoService = {
   decryptMessage: async (ciphertext, nonce) => {
     if (!nonce) return ciphertext; // Fallback for old mock messages
     
-    console.log("🛠️ [DEBUG Crypto] Performing AES-GCM Decryption...");
+    console.log("[DEBUG Crypto] Performing AES-GCM Decryption...");
     try {
       const key = await CryptoService._getSecretKey();
       
@@ -85,7 +85,7 @@ export const CryptoService = {
 
       return new TextDecoder().decode(decryptedContent);
     } catch (e) {
-      console.error("❌ [DEBUG Crypto] Decryption failed! The key or data is invalid.", e);
+      console.error("[DEBUG Crypto] Decryption failed! The key or data is invalid.", e);
       return "[Decryption Error: Encrypted Content]";
     }
   }

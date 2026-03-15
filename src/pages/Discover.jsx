@@ -20,7 +20,7 @@ export default function Discover() {
         // Filter out yourself immediately
         setAllUsers(users.filter(u => u.id !== currentUser?.id));
       } catch (error) {
-        console.error("❌ [Discover] Fetch failed:", error);
+        console.error("[Discover] Fetch failed:", error);
       } finally {
         setIsSearching(false);
       }
