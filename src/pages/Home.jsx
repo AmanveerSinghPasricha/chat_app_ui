@@ -91,7 +91,7 @@ export default function Home() {
           <FeatureCard 
             icon={<ShieldCheck className="text-emerald-400" />} 
             title="Perfect Secrecy" 
-            desc="One-time prekeys [cite: 13, 23] ensure that your past data stays safe even if a future key is compromised." 
+            desc="One-time prekeys ensure that your past data stays safe even if a future key is compromised." 
           />
         </div>
       </section>
