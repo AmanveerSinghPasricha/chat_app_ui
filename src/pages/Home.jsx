@@ -55,7 +55,7 @@ export default function Home() {
           transition={{ delay: 0.2 }}
           className="text-lg md:text-xl text-zinc-400 max-w-2xl mb-12 leading-relaxed"
         >
-          Connect.io uses state-of-the-art End-to-End Encryption [cite: 13, 23] to ensure your 
+          Connect.io uses state-of-the-art End-to-End Encryption to ensure your 
           conversations remain strictly between you and your friends. Private, fast, and secure.
         </motion.p>
         
